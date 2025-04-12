@@ -1,0 +1,13 @@
+from agno.agent import Agent
+from agno.models.openai import OpenAIChat
+from agno.tools.duckduckgo import DuckDuckGoTools
+
+agent = Agent(
+    model=OpenAIChat(id="gpt-4o-mini"), # 9s - but results are better
+    # model=OpenAIChat(id="gpt-3.5-turbo"), # 4.9s - but results are worse
+    description="You are an enthusiastic news reporter with a flair for storytelling!",
+    tools=[DuckDuckGoTools()],
+    show_tool_calls=True,
+    markdown=True
+)
+agent.print_response("Tell me about a breaking news story from Toronto.", stream=True)
