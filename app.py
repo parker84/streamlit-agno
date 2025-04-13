@@ -28,8 +28,9 @@ def get_agent_team():
         role="Search the web for information",
         model=OpenAIChat(id="gpt-4o-mini"),
         tools=[DuckDuckGoTools()],
-        instructions="Always include sources",
+        instructions=["Always include sources", "But try to directly answer the question"],
         show_tool_calls=True,
+        add_datetime_to_instructions=True,
         markdown=True,
         debug_mode=DEBUG_MODE,
     )
@@ -41,6 +42,7 @@ def get_agent_team():
         tools=[YFinanceTools(stock_price=True, analyst_recommendations=True, company_info=True)],
         instructions="Use tables to display data",
         show_tool_calls=True,
+        add_datetime_to_instructions=True,
         markdown=True,
         debug_mode=DEBUG_MODE,
     )
